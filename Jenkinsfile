@@ -2,40 +2,18 @@ pipeline {
     agent any
 
     stages {
-        stage ('Compile Stage') {
-
+        stage ('code checkout, build, push') {
+			
+			
             steps {
-                
-                    sh 'mvn clean compile'
-                }
+                    git 'https://github.com/nikhil-k1200/webapp.git'
+					tool name: 'maven v3.8', type: 'maven'
+					mvn clean install -f /mnt/webapp/
+					sh 'docker build -t devopsnike/webapp:demo /mnt/webapp/
+					sh 'docker push devopsnike/webapp:demo1'
+            }
             
         }
 
-        stage ('Testing Stage') {
-
-            steps {
-                
-                    sh 'mvn test'
-                }
-            
-        }
-
-
-        stage ('Install Stage') {
-            steps {
-                
-                    sh 'mvn install'
-                }
-            
-        }
-        
-        stage ('Echo Branch') {
-
-            steps {
-                
-                    echo "This is master branch"
-                }
-            
-        }
-    }
+	}
 }
