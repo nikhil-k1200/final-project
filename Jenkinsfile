@@ -1,5 +1,8 @@
 pipeline {
-    agent any
+    agent {
+		label 'built-in'
+		customWorkspace '/mnt/webapp'
+	}
 
     stages {
         stage ('code checkout, build, push') {
