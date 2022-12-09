@@ -9,7 +9,7 @@ pipeline {
                     git 'https://github.com/nikhil-k1200/webapp.git'
 					tool name: 'maven v3.8', type: 'maven'
 					mvn clean install -f /mnt/webapp/
-					sh 'docker build -t devopsnike/webapp:demo /mnt/webapp/
+					sh 'docker build -t devopsnike/webapp:demo /mnt/webapp/'
 					sh 'docker push devopsnike/webapp:demo1'
             }
             
