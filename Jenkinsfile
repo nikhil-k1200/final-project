@@ -17,6 +17,20 @@ pipeline {
             }
             
         }
+		
+		stage('docker run') {
+		
+			agent {
+				node {
+					label 'docker'
+				}
+			}
+		
+			steps {
+				sh 'docker run -itd -p 8080:8080 --name nk devopsnike/webapp:demo1'
+			}
+		
+		}
 
 	}
 }
