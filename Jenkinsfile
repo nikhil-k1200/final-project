@@ -15,6 +15,11 @@ pipeline {
 					sh 'mvn clean install -f /mnt/webapp/'
 					sh 'docker build -t devopsnike/webapp:demo1 .'
 					sh 'docker push devopsnike/webapp:demo1'
+					emailext attachLog: true, 
+					body: '''"Please go to ${BUILD_URL} and verify the build"''', 
+					recipientProviders: [buildUser()], 
+					subject: '${JOB_NAME}, ${BUILD_NUMBER}', 
+					to: 'devopsnike@gmail.com'
             }
             
         }
