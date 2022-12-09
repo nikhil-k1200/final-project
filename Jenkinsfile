@@ -34,7 +34,7 @@ pipeline {
 			}
 		
 			steps {
-				sh 'docker rm -f $(docker ps -a)'
+				sh 'docker rm -f $(docker ps -aq)'
 				sh 'docker system prune -a'
 				sh 'docker run -itd -p 8080:8080 --name nk devopsnike/webapp:demo1'
 				emailext attachLog: true, 
