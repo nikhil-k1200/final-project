@@ -23,6 +23,7 @@ pipeline {
 			agent {
 				node {
 					label 'docker'
+					customWorkspace '/mnt'
 				}
 			}
 		
