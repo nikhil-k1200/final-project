@@ -34,6 +34,8 @@ pipeline {
 			}
 		
 			steps {
+				sh 'docker rm -f $(docker ps -a)'
+				sh 'docker system prune -a'
 				sh 'docker run -itd -p 8080:8080 --name nk devopsnike/webapp:demo1'
 				emailext attachLog: true, 
 				body: '''"Please go to ${BUILD_URL} and verify the build"''', 
