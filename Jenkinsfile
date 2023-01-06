@@ -11,7 +11,7 @@ pipeline {
 		
 			steps {
 			
-				git 'https://github.com/nikhil-k1200/webapp.git'
+				git 'https://github.com/nikhil-k1200/final-project.git'
 			}
 		}
 		
