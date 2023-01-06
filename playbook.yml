@@ -2,16 +2,19 @@
 
 - hosts: demo[1]
   become: true
-  
+
   tasks:
     - name: stop previous containers
-      command: docker stop $(docker ps -aq)
-      
+      command: docker stop project
+      ignore_errors: yes
+
     - name: remove previous containers
-      command: docker rm $(docker ps -aq)
-      
+      command: docker rm project
+      ignore_errors: yes
+
     - name: remove images
       command: docker system prune -a -f
-      
+      ignore_errors: yes
+
     - name: pull & start the container
       command: docker run -d --name project -p 8080:8080 devopsnike/project:latest
