@@ -1,0 +1,13 @@
+---
+
+- hosts: demo[0]
+  become: yes
+  
+  tasks:
+    - name: create docker image using war file
+      command: docker build -t devopsnike/project:latest .
+      args:
+        chdir: /home/ansible/123
+
+    - name: push image on to dockerhub
+      command: docker push devopsnike/project:latest
