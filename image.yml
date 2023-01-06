@@ -4,6 +4,10 @@
   become: yes
   
   tasks:
+  
+    - name: remove old images
+      command: docker system prune -a -f
+      
     - name: create docker image using war file
       command: docker build -t devopsnike/project:latest .
       args:
