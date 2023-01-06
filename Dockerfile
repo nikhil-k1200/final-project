@@ -1,3 +1,3 @@
-FROM tomcat
-COPY ./target/WebApp.war /usr/local/tomcat/webapps/
+FROM tomcat:latest
+COPY ./*.war /usr/local/tomcat/webapps/
 EXPOSE 8080
