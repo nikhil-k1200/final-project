@@ -1,6 +1,6 @@
 ---
 
-- hosts: demo
+- hosts: demo[1]
   become: true
   
   tasks:
@@ -11,7 +11,7 @@
       command: docker rm $(docker ps -aq)
       
     - name: remove images
-      command: docker system prune -f
+      command: docker system prune -a -f
       
     - name: pull & start the container
       command: docker run -d --name project -p 8080:8080 devopsnike/project:latest
