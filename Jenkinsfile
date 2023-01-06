@@ -7,7 +7,7 @@ pipeline {
 
 	stages {
 	
-		stage('code checkout') {
+		stage('checkout source-code') {
 		
 			steps {
 			
@@ -23,7 +23,7 @@ pipeline {
 			}
 		}
 		
-		stage('deploy to ansible') {
+		stage('send war, Dockerfile to ansible server') {
 		
 			steps {
 			
@@ -44,7 +44,7 @@ pipeline {
 			}
 		}
 		
-		stage('build image using ansible playbook') {
+		stage('send playbooks to ansible server') {
 		
 			steps {
 			
@@ -57,7 +57,7 @@ pipeline {
 			}
 		}
 		
-		stage('running playbooks') {
+		stage('running playbooks & deploying') {
 		
 			steps{
 			
